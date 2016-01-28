@@ -14,7 +14,7 @@ import UIKit
 
 class SuperHeroesViewControllerTests: AcceptanceTestCase {
 
-    private let repository = MockSuperHeroesRepository()
+    private var repository = MockSuperHeroesRepository()
 
     func testShowsEmptyCaseIfThereAreNoSuperHeroes() {
         givenThereAreNoSuperHeroes()
@@ -34,22 +34,57 @@ class SuperHeroesViewControllerTests: AcceptanceTestCase {
         tester().waitForAbsenceOfViewWithAccessibilityLabel("¯\\_(ツ)_/¯")
     }
 
-    func testShowsSuperHeroLabelIfThereAreSuperHeroes() {
-        let superHeroes = givenThereAreSomeSuperHeroes(1)
+    func testShowsSuperHeroLabelsIfThereAreSuperHeroes() {
+        let superHeroes = givenThereAreSomeSuperHeroes()
 
         openSuperHeroesViewController()
 
-        let cell = tester().waitForViewWithAccessibilityLabel(superHeroes.first!.name) as! SuperHeroTableViewCell
-        expect(cell.nameLabel.text).to(equal(superHeroes.first!.name))
+        for superHero in superHeroes {
+            let cell = tester().waitForViewWithAccessibilityLabel(superHero.name) as! SuperHeroTableViewCell
+            expect(cell.nameLabel.text).to(equal(superHero.name))
+        }
     }
 
-    func testShowsAvengersBadgeIfThereAreSuperHeroesFromTheAvengers() {
+    func testNumberOfSuperHeroesShownIsTheSameAsAvailableSuperHeroes() {
+        let superHeroes = givenThereAreSomeSuperHeroes()
+
+        openSuperHeroesViewController()
+
+        let superHeroesView = tester().waitForViewWithAccessibilityLabel("SuperHeroesTableView") as! UITableView
+        expect(superHeroesView.numberOfRowsInSection(0)).to(equal(superHeroes.count))
+    }
+
+    func testDoesNotShowAvengersBadgeIfTheSuperHeroIsNotAnAvenger() {
+        let superHeroes = givenThereAreSomeSuperHeroes(1, avengers: false)
+
+        openSuperHeroesViewController()
+
+        tester().waitForAbsenceOfViewWithAccessibilityLabel("\(superHeroes.first!.name) - Avengers Badge")
+    }
+
+    func testShowsAvengersBadgeIfTheSuperHeroIsAnAvenger() {
         let superHeroes = givenThereAreSomeSuperHeroes(1, avengers: true)
 
         openSuperHeroesViewController()
 
         let cell = tester().waitForViewWithAccessibilityLabel("\(superHeroes.first!.name) - Avengers Badge")
         expect(cell).notTo(beNil())
+    }
+
+    func testDoesNotShowLoadingViewIfThereAreSuperHeroes() {
+        givenThereAreSomeSuperHeroes()
+
+        openSuperHeroesViewController()
+
+        tester().waitForAbsenceOfViewWithAccessibilityLabel("LoadingView")
+    }
+
+    func testShowLoadingViewIfSuperHeroesAreNotLoaded() {
+        givenSuperHeroesAreNeverLoaded()
+
+        openSuperHeroesViewController()
+
+        tester().waitForViewWithAccessibilityLabel("LoadingView")
     }
 
     private func givenThereAreNoSuperHeroes() {
@@ -67,6 +102,10 @@ class SuperHeroesViewControllerTests: AcceptanceTestCase {
         }
         repository.superHeroes = superHeroes
         return superHeroes
+    }
+
+    private func givenSuperHeroesAreNeverLoaded() {
+        repository = MockNeverLoadingSuperHeroesRepository()
     }
 
     private func openSuperHeroesViewController() {

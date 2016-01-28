@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		497100EB1C5AA7C8009454D9 /* MockNeverLoadingSuperHeroesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497100EA1C5AA7C8009454D9 /* MockNeverLoadingSuperHeroesRepository.swift */; };
 		4C7B6CBB70442DF5D76C6FB1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC32F3D31A7392656DF9EC8 /* Pods.framework */; };
 		A49766FD2BE797878EB6F0FF /* Pods_KataSuperHeroesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01257CE4FD3D58EBF11F8BFE /* Pods_KataSuperHeroesTests.framework */; };
 		EB8705FF1C46508E00B66C19 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8705FE1C46508E00B66C19 /* XCTestCase.swift */; };
@@ -46,6 +47,7 @@
 		01257CE4FD3D58EBF11F8BFE /* Pods_KataSuperHeroesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KataSuperHeroesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20E34652C650483C9BBCEE01 /* Pods-KataSuperHeroesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KataSuperHeroesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KataSuperHeroesTests/Pods-KataSuperHeroesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E87717DA61D855EB79BB918 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		497100EA1C5AA7C8009454D9 /* MockNeverLoadingSuperHeroesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNeverLoadingSuperHeroesRepository.swift; sourceTree = "<group>"; };
 		638BC0F03D2B4AAC2709B7A1 /* Pods-KataSuperHeroesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KataSuperHeroesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KataSuperHeroesTests/Pods-KataSuperHeroesTests.release.xcconfig"; sourceTree = "<group>"; };
 		7FC32F3D31A7392656DF9EC8 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3D2D75CBF7668CD1D8265AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				EB8706081C4656C800B66C19 /* MockSuperHeroesRepository.swift */,
+				497100EA1C5AA7C8009454D9 /* MockNeverLoadingSuperHeroesRepository.swift */,
 			);
 			name = "Test Doubles";
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB8706091C4656C800B66C19 /* MockSuperHeroesRepository.swift in Sources */,
+				497100EB1C5AA7C8009454D9 /* MockNeverLoadingSuperHeroesRepository.swift in Sources */,
 				EB8706011C46510300B66C19 /* KIFTestActor.swift in Sources */,
 				EB8705FF1C46508E00B66C19 /* XCTestCase.swift in Sources */,
 				EB8706051C4653AC00B66C19 /* AcceptanceTestCase.swift in Sources */,

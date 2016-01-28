@@ -23,6 +23,7 @@ class SuperHeroDetailViewController: KataSuperHeroesViewController, SuperHeroDet
         guard let superHero = superHero else {
             return
         }
+        view.accessibilityLabel = "Detail: \(superHero.name)"
         userLabel.text = superHero.name
         userLabel.accessibilityLabel = "Name: \(superHero.name)"
         userLabel.hidden = false
