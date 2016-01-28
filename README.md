@@ -1,6 +1,6 @@
 ![Karumi logo][karumilogo] KataSuperHeroes for iOS. [![Build Status](https://travis-ci.org/Karumi/KataSuperHeroesIOS.svg?branch=master)](https://travis-ci.org/Karumi/KataSuperHeroesIOS)
 ============================
-
+ 
 - We are here to practice UI Testing.
 - We are going to use [KIF][kif] and [Nimble][nimble] to interact with the Application UI.
 - We are going to use manual [Dependency Injection][dependencyInjection] to replace production code with [Test Doubles][testDoubles].
