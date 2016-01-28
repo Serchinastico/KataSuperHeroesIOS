@@ -26,6 +26,24 @@ class SuperHeroesViewControllerTests: AcceptanceTestCase {
         expect(emptyCaseText.text).to(equal("¯\\_(ツ)_/¯"))
     }
 
+    func testShowsSuperHeroLabelIfThereAreSuperHeroes() {
+        givenThereAreSomeSuperHeroes()
+
+        openSuperHeroesViewController()
+
+        let cell = tester().waitForViewWithAccessibilityLabel("SuperHero - 1") as! SuperHeroTableViewCell
+        expect(cell.nameLabel.text).to(equal("SuperHero - 1"))
+    }
+
+    func testShowsAvengersBadgeIfThereAreSuperHeroesFromTheAvengers() {
+        givenThereAreSomeSuperHeroes(1, avengers: true)
+
+        openSuperHeroesViewController()
+
+        let cell = tester().waitForViewWithAccessibilityLabel("SuperHero - 0 - Avengers Badge")
+        expect(cell).notTo(beNil())
+    }
+
     private func givenThereAreNoSuperHeroes() {
         givenThereAreSomeSuperHeroes(0)
     }
